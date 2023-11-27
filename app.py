@@ -156,8 +156,11 @@ st.write(f"Total Negative Sentiment: {total_negative_count}")
 st.write(f"Total Neutral Sentiment: {total_neutral_count}")
 
 # Future Returns Prediction
-days_to_predict = st.number_input("Enter the number of days for future returns prediction:", min_value=1, step=1, value=30)
-portfolio_returns_prediction = predict_future_returns(stock_returns, optimal_weights, days_to_predict)
+if 'optimal_weights' in locals() and not stock_returns.empty:
+    days_to_predict = st.number_input("Enter the number of days for future returns prediction:", min_value=1, step=1, value=30)
+    portfolio_returns_prediction = predict_future_returns(stock_returns, optimal_weights, days_to_predict)
 
-st.subheader("Projected Future Returns for Portfolio:")
-st.write(f"{days_to_predict} days: {portfolio_returns_prediction.values[0]:.4f}")
+    st.subheader("Projected Future Returns for Portfolio:")
+    st.write(f"{days_to_predict} days: {portfolio_returns_prediction.values[0]:.4f}")
+else:
+    st.warning("Cannot predict future returns. Portfolio optimization may not have been successful or stock data is not available.")
