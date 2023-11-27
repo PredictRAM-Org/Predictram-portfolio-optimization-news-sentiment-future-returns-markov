@@ -1,0 +1,7 @@
+requests
+vaderSentiment
+pandas
+numpy
+scikit.learn
+yfinance
+datetime
