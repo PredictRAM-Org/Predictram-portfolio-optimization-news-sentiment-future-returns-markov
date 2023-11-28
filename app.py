@@ -84,7 +84,8 @@ def main():
     st.sidebar.header("Nifty Benchmark")
     nifty_symbol = st.sidebar.text_input("Enter Nifty 50 Benchmark Symbol", "^NSEI")
 
-    # ... (rest of the code remains unchanged)
+    # Initialize stock_data dictionary
+    stock_data = {}
 
     # Portfolio Optimization
     st.subheader("Performing Portfolio Optimization...")
@@ -93,16 +94,17 @@ def main():
         if stock_df is not None:
             stock_data[stock_symbol] = stock_df
 
-    # ... (rest of the code remains unchanged)
+    # Rest of the code for Portfolio Optimization
 
     # Sentiment Analysis
     st.subheader("Performing Sentiment Analysis...")
     for stock_symbol in stock_symbols_sentiment:
         news_articles = get_stock_news(stock_symbol, num_articles=10)
 
-        # ... (rest of the code remains unchanged)
+        # Rest of the code for Sentiment Analysis
 
     # ... (rest of the code remains unchanged)
+
 
 if __name__ == "__main__":
     main()
