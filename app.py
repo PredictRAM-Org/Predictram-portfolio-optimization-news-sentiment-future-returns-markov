@@ -94,12 +94,19 @@ def main():
         if stock_df is not None:
             stock_data[stock_symbol] = stock_df
 
-    # Rest of the code for Portfolio Optimization
+    if not stock_data:
+        st.warning("No stock data available for portfolio optimization.")
+    else:
+        # Rest of the code for Portfolio Optimization
 
     # Sentiment Analysis
     st.subheader("Performing Sentiment Analysis...")
     for stock_symbol in stock_symbols_sentiment:
         news_articles = get_stock_news(stock_symbol, num_articles=10)
+
+        if not news_articles:
+            st.warning(f"No news articles found for {stock_symbol}.")
+            continue
 
         # Rest of the code for Sentiment Analysis
 
